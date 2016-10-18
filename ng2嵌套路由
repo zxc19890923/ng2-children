@@ -1,0 +1,54 @@
+import {ModuleWithProviders}  from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {HomeComponent}      from './home.component';
+import {AboutComponent}      from './about.component';
+import {ProjectComponent}      from './project.component';
+import {ServiceComponent}      from './service.component';
+import {ContactComponent}      from './contact.component';
+import {HomeoneComponent} from "./homeone.component";
+import {HometwoComponent} from "./hometwo.component";
+import {HomethreeComponent} from "./homethree.component";
+// 坑啊 路径中不能使用反斜杠  path: "/home" 报错 困扰了我很久
+const appRoutes:Routes = [
+    {
+        path: "",
+        redirectTo: "home/homeOne",
+        pathMatch: "full"
+    },
+    {
+        path: 'home',
+        component: HomeComponent,
+        // 嵌套路由 界面中使用 routerLink="home/homeone"来连接
+        children: [
+            {
+                path: "homeOne",
+                component: HomeoneComponent
+            },
+            {
+                path: "homeTwo",
+                component: HometwoComponent
+            },
+            {
+                path: "homeThree",
+                component: HomethreeComponent
+            }
+        ]
+    },
+    {
+        path: 'about',
+        component: AboutComponent
+    },
+    {
+        path: 'project',
+        component: ProjectComponent
+    },
+    {
+        path: 'service',
+        component: ServiceComponent
+    },
+    {
+        path: 'contact',
+        component: ContactComponent
+    }
+];
+export const routing:ModuleWithProviders = RouterModule.forRoot(appRoutes);
