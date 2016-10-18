@@ -52,3 +52,7 @@ const appRoutes:Routes = [
     }
 ];
 export const routing:ModuleWithProviders = RouterModule.forRoot(appRoutes);
+
+
+
+详细文章链接地址：http://www.cnblogs.com/keatkeat/p/5810987.html
